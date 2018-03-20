@@ -19,7 +19,6 @@ import { AppRoutingModule }    from './app-routing.module';
 // Modules
 import { AppComponent }        from './app.component';
 import { AuthModule }          from './auth/auth.module';
-import { ProductsModule }      from './products/products.module';
 import { HttpServiceModule }   from './shared/asyncServices/http/http.module';
 import { UtilityModule}        from './shared/utility';
 
@@ -28,7 +27,6 @@ import { store }               from './shared/store';
 
 // Effects
 import { AuthEffects }         from './shared/store/effects/auth.effect';
-import { ProductsEffects }     from './shared/store/effects/products.effect';
 
 // Guards
 import { AuthGuard }           from './shared/guards/auth.guard';
@@ -51,7 +49,6 @@ import {
   SimpleNotificationsModule,
   NotificationsService
 }                              from 'angular2-notifications';
-import { NgxDatatableModule }  from '@swimlane/ngx-datatable';
 
 /**
  * Calling functions or calling new is not supported in metadata when using AoT.
@@ -78,13 +75,11 @@ export function configServiceFactory (config: ConfigService) {
     // Third party modules
     TranslateModule.forRoot(),
     SimpleNotificationsModule.forRoot(),
-    NgxDatatableModule,
 
     // App custom dependencies
     HttpServiceModule.forRoot(),
     UtilityModule.forRoot(),
 
-    ProductsModule,
     AuthModule,
     AppRoutingModule,
 
@@ -116,7 +111,6 @@ export function configServiceFactory (config: ConfigService) {
      * See: https://github.com/ngrx/effects/blob/master/docs/api.md#run
      */
     EffectsModule.run(AuthEffects),
-    EffectsModule.run(ProductsEffects)
   ],
   providers: [
     AuthGuard,

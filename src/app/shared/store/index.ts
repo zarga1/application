@@ -18,8 +18,6 @@ import { compose } from '@ngrx/core/compose';
  */
 import * as fromSettings        from './reducers/settings.reducer';
 import * as fromAuth            from './reducers/auth.reducer';
-import * as fromProducts        from './reducers/products.reducer';
-import * as fromProductDetails  from './reducers/product-details.reducer';
 
 /**
  * We treat each reducer like a table in a database. This means
@@ -28,8 +26,6 @@ import * as fromProductDetails  from './reducers/product-details.reducer';
 export interface State {
   settings:       fromSettings.State;
   login:          fromAuth.State;
-  products:       fromProducts.State;
-  productDetails: fromProductDetails.State;
 }
 
 /**
@@ -42,8 +38,6 @@ export interface State {
 const reducers = {
   settings:       fromSettings.reducer,
   login:          fromAuth.reducer,
-  products:       fromProducts.reducer,
-  productDetails: fromProductDetails.reducer
 };
 
 export function store(state: any, action: any) {
@@ -73,21 +67,3 @@ export const getAuthLoaded  = createSelector(getAuthState, fromAuth.getLoaded);
 export const getAuthLoading = createSelector(getAuthState, fromAuth.getLoading);
 export const getAuthFailed  = createSelector(getAuthState, fromAuth.getFailed);
 export const getLoggedUser  = createSelector(getAuthState, fromAuth.getLoggedUser);
-
-/**
- * Products store functions
- */
-export const getProductsState   = (state: State) => state.products;
-export const getProductsLoaded  = createSelector(getProductsState, fromProducts.getLoaded);
-export const getProductsLoading = createSelector(getProductsState, fromProducts.getLoading);
-export const getProductsFailed  = createSelector(getProductsState, fromProducts.getFailed);
-export const getProductsData    = createSelector(getProductsState, fromProducts.getData);
-
-/**
- * Product details store functions
- */
-export const getProductDetailsState   = (state: State) => state.productDetails;
-export const getProductDetailsLoaded  = createSelector(getProductDetailsState, fromProductDetails.getLoaded);
-export const getProductDetailsLoading = createSelector(getProductDetailsState, fromProductDetails.getLoading);
-export const getProductDetailsFailed  = createSelector(getProductDetailsState, fromProductDetails.getFailed);
-export const getProductDetailsData    = createSelector(getProductDetailsState, fromProductDetails.getData);

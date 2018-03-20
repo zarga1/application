@@ -7,13 +7,6 @@ var localizationSourceFilesEN = [
   "./i18n/products.en.json",
   "./i18n/components.en.json"
 ];
-
-var localizationSourceFilesHR = [
-  "./i18n/general.hr.json",
-  "./i18n/auth.hr.json",
-  "./i18n/products.hr.json",
-  "./i18n/components.hr.json"
-];
  
 function mergeAndSaveJsonFiles(src, dest) {
   jsonConcat({ src: src, dest: dest },
@@ -36,4 +29,3 @@ setEnvironment('./src/config/env.json', 'production');
 
 // Merge all localization files into one
 mergeAndSaveJsonFiles(localizationSourceFilesEN, "./src/i18n/en.json");
-mergeAndSaveJsonFiles(localizationSourceFilesHR, "./src/i18n/hr.json");

@@ -13,7 +13,6 @@ const INITIAL_STATE: State = {
   selectedLanguage: '',
   selectedCulture:  '',
   availableLanguages: [
-    {code: 'hr', name: 'HR', culture: 'hr-HR'},
     {code: 'en', name: 'EN', culture: 'en-EN'}
   ]
 };

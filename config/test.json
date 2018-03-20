@@ -10,10 +10,9 @@
 
   "localization": {
     "languages": [
-      {"code": "hr", "name": "HR", "culture": "hr-HR"},
       {"code": "en", "name": "EN", "culture": "en-EN"}
     ],
-    "defaultLanguage": "hr"
+    "defaultLanguage": "en"
   },
 
   "notifications": {

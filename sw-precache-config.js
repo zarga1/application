@@ -10,7 +10,6 @@ module.exports = {
     './dist/assets/images/*',
     './dist/config/*',
     './dist/i18n/en.json',
-    './dist/i18n/hr.json'
   ],
   runtimeCaching: [{
     urlPattern: '',
