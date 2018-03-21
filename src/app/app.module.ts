@@ -45,6 +45,7 @@ import { TranslateService }    from 'ng2-translate';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { CustomRouterStateSerializer } from './shared/utility/router-state-serializer.class';
+import { ProductsModule } from './products/products.module';
 
 /**
  * Calling functions or calling new is not supported in metadata when using AoT.
@@ -89,7 +90,9 @@ export function configServiceFactory (config: ConfigService) {
       logOnly: environment.production,
     }),
 
-    EffectsModule.forRoot([]),    
+    EffectsModule.forRoot([]),
+
+    ProductsModule,    
   ],
   providers: [
     AuthGuard,
