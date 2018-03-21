@@ -65,13 +65,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 
 
 /* ****************************************
- * Imports
- * ****************************************/
-@import '~@swimlane/ngx-datatable/release/index.css';
-@import '~@swimlane/ngx-datatable/release/themes/material.css';
-
-
-/* ****************************************
  * Scrollbar
  * ****************************************/
 *::-webkit-scrollbar {
@@ -221,32 +214,4 @@ p {
   button {
     font-size:1em;
   }
-}
-
-.datatable-body-cell {
-  cursor: pointer;
-}
-
-.ngx-datatable.material.striped .datatable-row-odd {
-  background: $color-theme-lightBlue;
-}
-
-.ngx-datatable .datatable-footer .datatable-pager .pager li a {
-  border-radius: 50%;
-
-  &:hover {
-    border-radius: 50%
-  }
-}
-
-.ngx-datatable.material .datatable-footer .datatable-pager li.active a {
-  background-color: $color-theme-lightBlue;
-  font-weight: normal;
-}
-
-.ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group,
-.ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group:hover,
-.ngx-datatable.material.single-selection .datatable-body-row.active,
-.ngx-datatable.material.single-selection .datatable-body-row.active:hover {
-  background-color: $color-theme-darkviolet;
 }

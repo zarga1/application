@@ -1,9 +1,6 @@
 import { Action } from '@ngrx/store';
-import {
-  LoginForm,
-  RegisterForm
-}                 from '../../models';
-import { type }   from '../../utility';
+import { type } from '../../shared/utility/index';
+import { LoginForm, RegisterForm } from '../../shared/models/index';
 
 export const ActionTypes = {
   DO_LOGIN:                  type('[Auth] Do Login'),

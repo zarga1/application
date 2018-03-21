@@ -1,5 +1,5 @@
-import * as actions from '../actions/auth.action';
-import { User }     from '../../models';
+import * as actions from './auth.action';
+import { User } from '../../shared/models/index';
 
 export interface State {
   loading: boolean;

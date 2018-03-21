@@ -1,6 +1,5 @@
 import { Injectable }           from '@angular/core';
 import { TranslateService }     from 'ng2-translate';
-import { NotificationsService } from 'angular2-notifications';
 import { ConfigService }        from '../../app-config.service';
 import { Observable }           from 'rxjs/Rx';
 
@@ -9,7 +8,6 @@ export class UtilService {
 
   constructor(
     private translateService: TranslateService,
-    private notificationService: NotificationsService,
     private configService: ConfigService
   ) {}
 
@@ -42,7 +40,7 @@ export class UtilService {
         break;
     }
 
-    this.notificationService[type](title, message, this.configService.get('notifications').options);
+    //this.notificationService[type](title, message, this.configService.get('notifications').options);
   }
 
   /**

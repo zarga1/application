@@ -6,7 +6,6 @@ import { AppSandbox } from './app.sandbox';
   selector: 'body',
   template: `
     <router-outlet></router-outlet>
-    <simple-notifications [options]="appSandbox.getNotificationOptions()"></simple-notifications>
   `,
   host:     {'[class.body-loginPage]':'isLoginPage'},
   providers: [AppSandbox]

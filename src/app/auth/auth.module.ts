@@ -10,9 +10,12 @@ import { RegisterComponent }         from './register/register.component';
 import { LoginComponent }            from './login/login.component';
 import { ComponentsModule }          from '../shared/components';
 import { TranslateModule }           from 'ng2-translate';
-import { SimpleNotificationsModule } from 'angular2-notifications';
 import { AuthSandbox }               from './auth.sandbox';
 import { AuthApiClient }             from './authApiClient.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/index';
+import { AuthEffects } from './store/auth.effect';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [
@@ -23,7 +26,9 @@ import { AuthApiClient }             from './authApiClient.service';
     ReactiveFormsModule,
     ComponentsModule,
     TranslateModule,
-    SimpleNotificationsModule
+    
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([AuthEffects]),
   ],
   declarations: [
     RegisterComponent,

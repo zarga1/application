@@ -1,6 +1,5 @@
 import { Injectable }           from '@angular/core';
 import { TranslateService }     from 'ng2-translate';
-import { NotificationsService } from 'angular2-notifications';
 import { ConfigService }        from '../../../app-config.service';
 import { Router }               from '@angular/router';
 import { Observable }           from 'rxjs/Observable';
@@ -10,7 +9,6 @@ export class HttpResponseHandler {
 	constructor(
 		private router: Router,
     private translateService: TranslateService,
-    private notificationsService: NotificationsService,
     private configService: ConfigService
   ) {}
 
@@ -80,7 +78,7 @@ export class HttpResponseHandler {
     this.router.navigate(['/login']);
 
     if (unauthorizedEndpoints.length) {
-      this.notificationsService.info('Info', this.translateService.instant('ServerError401'), this.configService.get('notifications').options);
+      //this.notificationsService.info('Info', this.translateService.instant('ServerError401'), this.configService.get('notifications').options);
     }
   }
 
@@ -88,7 +86,7 @@ export class HttpResponseHandler {
    * Shows notification errors when server response status is 403
    */
   private handleForbidden(): void {
-    this.notificationsService.error('error', this.translateService.instant('ServerError403'), this.configService.get('notifications').options);
+    //this.notificationsService.error('error', this.translateService.instant('ServerError403'), this.configService.get('notifications').options);
     this.router.navigate(['/login']);
   }
 
@@ -168,6 +166,6 @@ export class HttpResponseHandler {
    * @param message
    */
   private showNotificationError(title: string, message: string): void {
-    this.notificationsService.error(title, message, this.configService.get('notifications').options);
+    //this.notificationsService.error(title, message, this.configService.get('notifications').options);
   }
 }

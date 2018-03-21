@@ -15,12 +15,13 @@ export class AuthGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return true
+    /* var currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) return true;
 
     // Navigate to the login page with extras
     this.router.navigate(['/login']);
-    return false;
+    return false; */
   }
 
 }

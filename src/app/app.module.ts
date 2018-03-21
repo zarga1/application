@@ -23,10 +23,7 @@ import { HttpServiceModule }   from './shared/asyncServices/http/http.module';
 import { UtilityModule}        from './shared/utility';
 
 // Store
-import { store }               from './shared/store';
-
-// Effects
-import { AuthEffects }         from './shared/store/effects/auth.effect';
+import { reducers, metaReducers }               from './shared/store';
 
 // Guards
 import { AuthGuard }           from './shared/guards/auth.guard';
@@ -45,10 +42,9 @@ import {
   TranslateStaticLoader
 }                              from 'ng2-translate';
 import { TranslateService }    from 'ng2-translate';
-import {
-  SimpleNotificationsModule,
-  NotificationsService
-}                              from 'angular2-notifications';
+import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { CustomRouterStateSerializer } from './shared/utility/router-state-serializer.class';
 
 /**
  * Calling functions or calling new is not supported in metadata when using AoT.
@@ -74,7 +70,6 @@ export function configServiceFactory (config: ConfigService) {
 
     // Third party modules
     TranslateModule.forRoot(),
-    SimpleNotificationsModule.forRoot(),
 
     // App custom dependencies
     HttpServiceModule.forRoot(),
@@ -83,34 +78,18 @@ export function configServiceFactory (config: ConfigService) {
     AuthModule,
     AppRoutingModule,
 
-    /**
-     * StoreModule.provideStore is imported once in the root module, accepting a reducer
-     * function or object map of reducer functions. If passed an object of
-     * store, combineReducers will be run creating your application
-     * meta-reducer. This returns all providers for an @ngrx/store
-     * based application.
-     */
-    StoreModule.provideStore(store),
+    StoreModule.forRoot(reducers, { metaReducers }),
 
-    /**
-     * Store devtools instrument the store retaining past versions of state
-     * and recalculating new states. This enables powerful time-travel
-     * debugging.
-     * 
-     * To use the debugger, install the Redux Devtools extension for either
-     * Chrome or Firefox
-     * 
-     * See: https://github.com/zalmoxisus/redux-devtools-extension
-     */
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router'      
+    }),
 
-    /**
-     * EffectsModule.run() sets up the effects class to be initialized
-     * immediately when the application starts.
-     *
-     * See: https://github.com/ngrx/effects/blob/master/docs/api.md#run
-     */
-    EffectsModule.run(AuthEffects),
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx Book Store DevTools',
+      logOnly: environment.production,
+    }),
+
+    EffectsModule.forRoot([]),    
   ],
   providers: [
     AuthGuard,
@@ -121,7 +100,8 @@ export function configServiceFactory (config: ConfigService) {
       useFactory: configServiceFactory,
       deps: [ConfigService], 
       multi: true
-    }
+    },
+    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },    
   ],
   bootstrap: [AppComponent]
 })
