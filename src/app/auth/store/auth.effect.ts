@@ -29,7 +29,7 @@ export class AuthEffects {
     .ofType(actions.ActionTypes.DO_LOGIN)
     .map((action: actions.DoLoginAction) => action.payload)
     .switchMap(state => {
-      return this.authApiClient.login(state)
+      return this.fakeLogin(state)
         .map(user    => new actions.DoLoginSuccessAction(new User(user)))
         .catch(error => of(new actions.DoLoginFailAction()));
     });
@@ -42,7 +42,7 @@ export class AuthEffects {
     .ofType(actions.ActionTypes.DO_REGISTER)
     .map((action: actions.DoRegisterAction) => action.payload)
     .switchMap(state => {
-      return this.authApiClient.register(state)
+      return this.fakeRegister(state)
         .map(user    => new actions.DoRegisterSuccessAction(new User(user)))
         .catch(error => of(new actions.DoRegisterFailAction()));
     });
@@ -55,8 +55,34 @@ export class AuthEffects {
     .ofType(actions.ActionTypes.DO_LOGOUT)
     .map((action: actions.DoLogoutAction) => null)
     .switchMap(state => {
-      return this.authApiClient.logout()
+      return this.fakeLogout()
         .map(()      => new actions.DoLogoutSuccessAction())
         .catch(error => of(new actions.DoLogoutFailAction()));
     });
+
+    fakeRegister(state): Observable<any>{
+      return new Observable(observer => {
+        let user: User = new User(state);
+        user.add();
+        observer.next(user);
+      })
+    }
+  
+    fakeLogin(state): Observable<any>{
+      return new Observable(observer => {
+        let user: User = new User(state);
+        if(user.exist()) {
+          let users: Array<User> = JSON.parse(localStorage.getItem('users'));
+          let userToBeLoaded = users.find(usr => usr.email.localeCompare(user.email)==0);
+          return observer.next(userToBeLoaded);
+        }
+      })
+    }
+  
+    fakeLogout(): Observable<any>{
+      return new Observable(observer => {
+        User.remove();
+        return observer.next({});
+      })
+    }
 }

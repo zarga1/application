@@ -71,7 +71,7 @@ export class AuthSandbox extends Sandbox {
     // Subscribes to logged user data and save/remove it from the local storage
     this.subscriptions.push(this.loggedUser$.subscribe((user: User) => {
       if (user.isLoggedIn) user.save();
-      else                 user.remove();
+      else                 User.remove();
     }));
   }
 
