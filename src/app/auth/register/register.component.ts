@@ -58,12 +58,6 @@ export class RegisterComponent {
     this.confirmPassword  = this.registerForm.controls['confirmPassword'];
   }
 
-  /**
-   * Handles form 'submit' event. Calls sandbox register function if form is valid.
-   *
-   * @param event
-   * @param form
-   */
   public onSubmit(event: Event, form: any): void {
     event.stopPropagation();
     this.submitted = true;

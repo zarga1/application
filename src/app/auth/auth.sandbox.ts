@@ -18,19 +18,19 @@ import {
 @Injectable()
 export class AuthSandbox extends Sandbox {
 
-  public loginLoading$ = this.appState$.pipe(select(fromAuth.getAuthLoading));
-  public loginLoaded$  = this.appState$.pipe(select(fromAuth.getAuthLoaded));
-  public loggedUser$   = this.appState$.pipe(select(fromAuth.getLoggedUser));
+  public loginLoading$ = this.store.pipe(select(fromAuth.getAuthLoading));
+  public loginLoaded$  = this.store.pipe(select(fromAuth.getAuthLoaded));
+  public loggedUser$   = this.store.pipe(select(fromAuth.getLoggedUser));
 
   private subscriptions: Array<Subscription> = [];
 
   constructor(
     private router: Router,
-    protected appState$: Store<fromAuth.State>,
+    protected store: Store<fromAuth.State>,
     private utilService: UtilService,
     public validationService: ValidationService
   ) {
-    super(appState$);
+    super(store);
     this.registerAuthEvents();
   }
 
@@ -40,7 +40,7 @@ export class AuthSandbox extends Sandbox {
    * @param form
    */
   public login(form: any): void {
-    this.appState$.dispatch(new authActions.DoLoginAction(new LoginForm(form)));
+    this.store.dispatch(new authActions.DoLoginAction(new LoginForm(form)));
   }
 
   /**
@@ -49,7 +49,7 @@ export class AuthSandbox extends Sandbox {
    * @param form
    */
   public register(form: any): void {
-    this.appState$.dispatch(new authActions.DoRegisterAction(new RegisterForm(form)));
+    this.store.dispatch(new authActions.DoRegisterAction(new RegisterForm(form)));
   }
 
   /**

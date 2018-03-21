@@ -16,7 +16,11 @@
     "sy-pre-build": "node hooks/pre-build.js",
     "sy-post-build": "node hooks/post-build.js",
     "sw": "sw-precache --root=./dist --config=sw-precache-config.js",
-    "sy-build": "npm run sy-pre-build & ng build --prod --aot & npm run sy-post-build & npm run sw"
+    "sy-build": "npm run sy-pre-build & ng build --prod --aot & npm run sy-post-build & npm run sw",
+
+    "gen:module": "'node_modules/.bin/ng' generate module products --module app.module.ts --routing=true --spec=false",
+    "gen:store": "'node_modules/.bin/ng' generate store Products --statePath products/store -m products/products.module.ts",
+    "gen:feature": "'node_modules/.bin/ng' generate feature products/store/Product --reducers ../store/index.ts --spec=false"
   },
   "private": true,
   "dependencies": {

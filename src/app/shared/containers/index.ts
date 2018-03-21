@@ -3,7 +3,6 @@ import { CommonModule } 		from '@angular/common';
 
 import { ComponentsModule } from '../components';
 import { LayoutContainer }  from './layout/layout.container';
-import { LayoutSandbox } 		from './layout/layout.sandbox';
 import { TranslateModule } 	from 'ng2-translate';
 
 export const CONTAINERS = [
@@ -18,6 +17,6 @@ export const CONTAINERS = [
   ],
   declarations: CONTAINERS,
   exports: CONTAINERS,
-  providers: [LayoutSandbox]
+  providers: []
 })
 export class ContainersModule { }

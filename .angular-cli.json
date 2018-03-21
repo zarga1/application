@@ -11,8 +11,18 @@
         "assets",
         "favicon.ico",
         "service-worker.js",
-        { "glob": "**/*", "input": "../config", "output": "./config/" },
-        { "glob": "en.json", "input": "../i18n", "output": "./i18n/" }
+        {
+  "glob": "**/*",
+  "input": "../config",
+  "output": "./config/",
+  "allowOutsideOutDir": false
+},
+        {
+  "glob": "en.json",
+  "input": "../i18n",
+  "output": "./i18n/",
+  "allowOutsideOutDir": false
+}
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -55,6 +65,10 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "component": {
+    },
+    "schematics": {
+      "collection": "@ngrx/schematics"
+    }
   }
 }
