@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsCollectionComponent implements OnInit {
 
-  constructor() { }
+  constructor() { console.log("instaere!")}
 
   ngOnInit() {
   }

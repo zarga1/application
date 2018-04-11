@@ -22,7 +22,7 @@
     "gen:module": "'node_modules/.bin/ng' generate module products --module app.module.ts --routing=true --spec=false",
     "gen:store": "'node_modules/.bin/ng' generate store Products --statePath products/store -m products/products.module.ts",
     "gen:feature": "'node_modules/.bin/ng' generate feature products/store/Product --reducers ../store/index.ts --spec=false",
-    "gen:coomponent":"'node_modules/.bin/ng' generate component products/productsCollection --module /products/products.module.ts --routing --spec=false"
+    "gen:component": "'node_modules/.bin/ng' generate component products/components/productsCollection --module products/products.module.ts --spec=false"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +36,7 @@
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/router": "^5.2.9",
     "@ngxs/store": "^2.0.0",
+    "@ngxs/devtools-plugin": "^2.0.0",
     "core-js": "2.4.1",
     "ng2-translate": "^5.0.0",
     "ngrx-store-freeze": "^0.2.1",

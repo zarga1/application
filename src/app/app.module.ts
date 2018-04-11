@@ -39,14 +39,11 @@ import { TranslateService }    from 'ng2-translate';
 import { environment } from '../environments/environment';
 import { ContainersModule } from './shared/containers';
 import { ProductsModule } from './products/products.module';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
-/**
- * Calling functions or calling new is not supported in metadata when using AoT.
- * The work-around is to introduce an exported function.
- *
- * The reason for this limitation is that the AoT compiler needs to generate the code that calls the factory
- * and there is no way to import a lambda from a module, you can only import an exported symbol.
- */
+import { AppState } from './shared/store/app.state';
+import { RouterState } from './shared/store/router.state';
 
 export function configServiceFactory (config: ConfigService) {
   return () => config.load()
@@ -57,17 +54,18 @@ export function configServiceFactory (config: ConfigService) {
     AppComponent
   ],
   imports: [
-    // Angular core dependencies
     BrowserModule,
     FormsModule,
     HttpModule,
     TranslateModule.forRoot(),
-    
-    // App custom dependencies
+    NgxsModule.forRoot([AppState, RouterState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+
     HttpServiceModule.forRoot(),
     UtilityModule.forRoot(),
     ContainersModule,
     AppRoutingModule,
+
     ProductsModule,
   ],
   providers: [
