@@ -24,10 +24,6 @@ import {
 })
 export class LanguageSelectorComponent {
 
-  @Input() selectedLanguage: string;
-  @Input() availableLanguages: Array<any>;
-	@Output() select: EventEmitter<any> = new EventEmitter();
-
 	public show: boolean = false;
 
   constructor(private elementRef: ElementRef) {}
@@ -44,6 +40,6 @@ export class LanguageSelectorComponent {
 
   public selectLanguage(lang: any) {
     this.show = false;
-    this.select.emit({code: lang.code, culture: lang.culture});
+    //this.select.emit({code: lang.code, culture: lang.culture});
   }
 }

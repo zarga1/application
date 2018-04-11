@@ -5,6 +5,7 @@ import {
   Headers,
   RequestOptions
 }                     from '@angular/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ConfigService {
@@ -24,19 +25,17 @@ export class ConfigService {
       let options = new RequestOptions({ headers: headers });
 
       this.http.get('/config/env.json')
-      .map(res => res.json())
+      .pipe(map(res => res.json()))
       .subscribe((env_data) => {
         this.env = env_data;
 
         this.http.get('/config/' + env_data.env + '.json')
-          .map(res => res.json())
-          .catch((error: any) => {
-            return Observable.throw(error.json().error || 'Server error');
-          })
+          .pipe(map(res => res.json()))
           .subscribe((data) => {
             this.config = data;
             resolve(true);
           });
+          
       });
 
     });

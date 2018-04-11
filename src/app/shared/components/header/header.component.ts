@@ -15,17 +15,11 @@ import {
       </a>
 
       <div class="header-profileBarWrapper">
-        <profile-action-bar
-          (logout)="logout.emit($event)"
-          [userImage]="userImage"
-          [userEmail]="userEmail">
+        <profile-action-bar>
         </profile-action-bar>
       </div>
       <div class="header-languageSelectorWrapper">
-        <language-selector
-          (select)="selectLanguage.emit($event)"
-          [selectedLanguage]="selectedLanguage"
-          [availableLanguages]="availableLanguages">
+        <language-selector>
         </language-selector>
       </div>
     </div>
@@ -34,11 +28,5 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  @Input() selectedLanguage:    string;
-  @Input() availableLanguages:  Array<any>;
-  @Input() userImage:           string;
-  @Input() userEmail:           string;
 
-  @Output() selectLanguage: EventEmitter<any> = new EventEmitter();
-  @Output() logout:         EventEmitter<any> = new EventEmitter();
 }

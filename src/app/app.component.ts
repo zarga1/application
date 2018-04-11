@@ -1,6 +1,5 @@
 import { Component }  from '@angular/core';
 import { Router }     from '@angular/router';
-import { AppSandbox } from './app.sandbox';
 
 @Component({
   selector: 'body',
@@ -8,21 +7,17 @@ import { AppSandbox } from './app.sandbox';
     <router-outlet></router-outlet>
   `,
   host:     {'[class.body-loginPage]':'isLoginPage'},
-  providers: [AppSandbox]
+  providers: []
 })
 export class AppComponent {
 
   public isLoginPage: boolean;
 
   constructor(
-    private router: Router,
-    public appSandbox: AppSandbox
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.appSandbox.setupLanguage();
-    // Load user from local storage into redux state
-    this.appSandbox.loadUser();
     this.registerEvents();
   }
 
@@ -30,9 +25,6 @@ export class AppComponent {
    * Registers events needed for the application
    */
   private registerEvents(): void {
-    // Subscribes to route change event and sets "isLoginPage" variable in order to set correct CSS class on body tag.
-    this.router.events.subscribe((route) => {
-      this.isLoginPage = route['url'] === '/login' ? true : false;
-    });
+
   }
 }

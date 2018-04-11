@@ -1,6 +1,4 @@
 import { Observable } from 'rxjs/Rx';
-import { Store }      from '@ngrx/store';
-import { State }      from '../store';
 
 let typeCache: { [label: string]: boolean } = {};
 

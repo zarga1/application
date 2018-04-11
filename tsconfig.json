@@ -12,5 +12,11 @@
       "es2016",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "src/schematics/**/*"
+  ],
+  "exclude": [
+    "src/schematics/*/files/**/*"
+  ]
 }

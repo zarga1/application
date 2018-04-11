@@ -18,12 +18,10 @@ import { AppRoutingModule }    from './app-routing.module';
 
 // Modules
 import { AppComponent }        from './app.component';
-import { AuthModule }          from './auth/auth.module';
 import { HttpServiceModule }   from './shared/asyncServices/http/http.module';
 import { UtilityModule}        from './shared/utility';
 
 // Store
-import { reducers, metaReducers }               from './shared/store';
 
 // Guards
 import { AuthGuard }           from './shared/guards/auth.guard';
@@ -32,10 +30,6 @@ import { CanDeactivateGuard }  from './shared/guards/canDeactivate.guard';
 // Services
 import { ConfigService }       from './app-config.service';
 
-// Third party libraries
-import { StoreModule }         from '@ngrx/store';
-import { EffectsModule }       from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {
   TranslateModule,
   TranslateLoader,
@@ -43,9 +37,7 @@ import {
 }                              from 'ng2-translate';
 import { TranslateService }    from 'ng2-translate';
 import { environment } from '../environments/environment';
-import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
-import { CustomRouterStateSerializer } from './shared/utility/router-state-serializer.class';
-import { ProductsModule } from './products/products.module';
+import { ContainersModule } from './shared/containers';
 
 /**
  * Calling functions or calling new is not supported in metadata when using AoT.
@@ -68,31 +60,14 @@ export function configServiceFactory (config: ConfigService) {
     BrowserModule,
     FormsModule,
     HttpModule,
-
-    // Third party modules
     TranslateModule.forRoot(),
-
+    
     // App custom dependencies
     HttpServiceModule.forRoot(),
     UtilityModule.forRoot(),
-
-    AuthModule,
+    ContainersModule,
     AppRoutingModule,
 
-    StoreModule.forRoot(reducers, { metaReducers }),
-
-    StoreRouterConnectingModule.forRoot({
-      stateKey: 'router'      
-    }),
-
-    StoreDevtoolsModule.instrument({
-      name: 'NgRx Book Store DevTools',
-      logOnly: environment.production,
-    }),
-
-    EffectsModule.forRoot([]),
-
-    ProductsModule,    
   ],
   providers: [
     AuthGuard,
@@ -103,8 +78,7 @@ export function configServiceFactory (config: ConfigService) {
       useFactory: configServiceFactory,
       deps: [ConfigService], 
       multi: true
-    },
-    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },    
+    }    
   ],
   bootstrap: [AppComponent]
 })
