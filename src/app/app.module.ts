@@ -38,6 +38,7 @@ import {
 import { TranslateService }    from 'ng2-translate';
 import { environment } from '../environments/environment';
 import { ContainersModule } from './shared/containers';
+import { ProductsModule } from './products/products.module';
 
 /**
  * Calling functions or calling new is not supported in metadata when using AoT.
@@ -67,7 +68,7 @@ export function configServiceFactory (config: ConfigService) {
     UtilityModule.forRoot(),
     ContainersModule,
     AppRoutingModule,
-
+    ProductsModule,
   ],
   providers: [
     AuthGuard,

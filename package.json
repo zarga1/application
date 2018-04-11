@@ -21,7 +21,8 @@
     "sy-build": "npm run sy-pre-build & ng build --prod --aot & npm run sy-post-build & npm run sw",
     "gen:module": "'node_modules/.bin/ng' generate module products --module app.module.ts --routing=true --spec=false",
     "gen:store": "'node_modules/.bin/ng' generate store Products --statePath products/store -m products/products.module.ts",
-    "gen:feature": "'node_modules/.bin/ng' generate feature products/store/Product --reducers ../store/index.ts --spec=false"
+    "gen:feature": "'node_modules/.bin/ng' generate feature products/store/Product --reducers ../store/index.ts --spec=false",
+    "gen:coomponent":"'node_modules/.bin/ng' generate component products/productsCollection --module /products/products.module.ts --routing --spec=false"
   },
   "private": true,
   "dependencies": {
@@ -45,11 +46,8 @@
   },
   "devDependencies": {
     "@angular-devkit/core": "^0.4.6",
-    "@angular-devkit/schematics": "^0.4.6",
-    "@schematics/angular": "^0.4.6",
     "@angular/cli": "1.6.6",
     "@angular/compiler-cli": "^5.2.9",
-    "@ngrx/schematics": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
