@@ -5,7 +5,7 @@ import {
   APP_INITIALIZER
 }                              from '@angular/core';
 import { FormsModule }         from '@angular/forms';
-import { 
+import {
   HttpModule,
   RequestOptions,
   XHRBackend,
@@ -44,6 +44,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 import { AppState } from './shared/store/app.state';
 import { RouterState } from './shared/store/router.state';
+import { DashboardComponent } from './dashboard.component';
 
 export function configServiceFactory (config: ConfigService) {
   return () => config.load()
@@ -51,7 +52,8 @@ export function configServiceFactory (config: ConfigService) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +67,6 @@ export function configServiceFactory (config: ConfigService) {
     UtilityModule.forRoot(),
     ContainersModule,
     AppRoutingModule,
-
-    ProductsModule,
   ],
   providers: [
     AuthGuard,
@@ -75,9 +75,9 @@ export function configServiceFactory (config: ConfigService) {
     {
       provide: APP_INITIALIZER,
       useFactory: configServiceFactory,
-      deps: [ConfigService], 
+      deps: [ConfigService],
       multi: true
-    }    
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,9 @@ import { Router }     from '@angular/router';
 @Component({
   selector: 'body',
   template: `
-    <router-outlet></router-outlet>
+    <app-layout>
+      <router-outlet></router-outlet>
+    </app-layout>
   `,
   host:     {'[class.body-loginPage]':'isLoginPage'},
   providers: []

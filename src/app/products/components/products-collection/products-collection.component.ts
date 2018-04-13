@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { ProductsStateModel } from '../../store/products.state';
 
 @Component({
   selector: 'app-products-collection',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsCollectionComponent implements OnInit {
 
-  constructor() { console.log("instaere!")}
+  @Select((state) => state.products.cars)
+  cars$;
+
+  selectedCars = [];
+
+  constructor() {}
 
   ngOnInit() {
   }
