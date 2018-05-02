@@ -5,7 +5,7 @@ import {
   APP_INITIALIZER
 }                              from '@angular/core';
 import { FormsModule }         from '@angular/forms';
-import { 
+import {
   HttpModule,
   RequestOptions,
   XHRBackend,
@@ -46,6 +46,8 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { CustomRouterStateSerializer } from './shared/utility/router-state-serializer.class';
 import { ProductsModule } from './products/products.module';
+import { EntityStoreModule } from './shared/store/entity-store.module';
+import { HttpClientModule } from '@angular/common/http';
 
 /**
  * Calling functions or calling new is not supported in metadata when using AoT.
@@ -67,7 +69,7 @@ export function configServiceFactory (config: ConfigService) {
     // Angular core dependencies
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
 
     // Third party modules
     TranslateModule.forRoot(),
@@ -82,7 +84,7 @@ export function configServiceFactory (config: ConfigService) {
     StoreModule.forRoot(reducers, { metaReducers }),
 
     StoreRouterConnectingModule.forRoot({
-      stateKey: 'router'      
+      stateKey: 'router'
     }),
 
     StoreDevtoolsModule.instrument({
@@ -92,7 +94,9 @@ export function configServiceFactory (config: ConfigService) {
 
     EffectsModule.forRoot([]),
 
-    ProductsModule,    
+    ProductsModule,
+
+    EntityStoreModule,
   ],
   providers: [
     AuthGuard,
@@ -101,10 +105,10 @@ export function configServiceFactory (config: ConfigService) {
     {
       provide: APP_INITIALIZER,
       useFactory: configServiceFactory,
-      deps: [ConfigService], 
+      deps: [ConfigService],
       multi: true
     },
-    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },    
+    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
   ],
   bootstrap: [AppComponent]
 })

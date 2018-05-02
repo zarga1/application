@@ -7,12 +7,12 @@ import { RouterStateUrl } from '../utility/router-state-serializer.class';
 
 export interface State {
   settings:       fromSettings.State;
-  router:         fromRouter.RouterReducerState<RouterStateUrl>;  
+  router:         fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
 export const reducers: ActionReducerMap<State> = {
   settings:       fromSettings.reducer,
-  router:         fromRouter.routerReducer,  
+  router:         fromRouter.routerReducer,
 };
 
 /**
@@ -22,9 +22,6 @@ export const reducers: ActionReducerMap<State> = {
  */
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
   return function(state: State, action: any): State {
-    console.log('state', state);
-    console.log('action', action);
-
     return reducer(state, action);
   };
 }
