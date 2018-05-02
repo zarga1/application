@@ -1,5 +1,6 @@
 // Angular core modules
 import { BrowserModule }       from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NgModule,
   APP_INITIALIZER
@@ -45,6 +46,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppState } from './shared/store/app.state';
 import { RouterState } from './shared/store/router.state';
 import { DashboardComponent } from './dashboard.component';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 
 export function configServiceFactory (config: ConfigService) {
   return () => config.load()
@@ -57,9 +59,12 @@ export function configServiceFactory (config: ConfigService) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     TranslateModule.forRoot(),
+    NgxsFormPluginModule.forRoot(),
+
     NgxsModule.forRoot([AppState, RouterState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
 

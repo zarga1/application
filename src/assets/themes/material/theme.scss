@@ -19,8 +19,40 @@
   padding: 5px;
 }
 
+//dialog
+.ui-dialog {
+  border-radius: 0 0 0 0;
+  border: 0
+}
+.ui-dialog-titlebar-close:hover{
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+//input
+input,textarea{
+  padding: .75rem 1.125rem;
+  color: #2a2a2a;
+  background-color: #fff;
+  border: 2px solid #dadfe6;
+  font-family: Roboto;
+  border-radius: .375rem;
+}
+input:focus, textarea:focus{
+  border: 2px solid green;
+  outline: none !important
+}
 //button
 .ui-button {
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  font-weight: 500;
+  -webkit-transition: none;
+  transition: none;
+  padding: .3rem .7rem;
+  font-size: 1rem;
+  /* line-height: 1.25; */
+  border-radius: .2em;
   background-color: white;
   color: black;
   box-sizing: border-box;
@@ -41,20 +73,100 @@
   margin: 0;
   min-width: 88px;
   line-height: 36px;
-  padding: 0 16px;
-  border-radius: 2px;
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  opacity: .9;
 }
-.ui-button:focus {
+.ui-button:enabled:active {
+  opacity: 1.95!important;
+  transform: scale(.95,.95)
+}
+.ui-button:enabled:hover {
   background: none;
+  opacity: .8 !important;
 }
-.ui-button-primary {
-  background-color: #3f51b5;
-  color: white
+
+/* Primary */
+.ui-button.ui-button-primary.ui-state-default,
+.ui-button.ui-button-primary:enabled:active,
+.ui-splitbutton.ui-button-primary .ui-button.ui-state-default,
+.ui-splitbutton.ui-button-primary .ui-button:enabled:active,
+.ui-button.ui-button-primary:enabled:hover,
+.ui-splitbutton.ui-button-primary .ui-button:enabled:hover {
+    background-image: -webkit-gradient(linear,left top,right top,from(#b57fff),to(#8a7fff));
+    color: white !important;
 }
-.ui-button-warning {
-  background-color: #ff4081;
-  color: white
+
+/* Success */
+.ui-button.ui-button-success.ui-state-default,
+.ui-button.ui-button-success:enabled:active,
+.ui-splitbutton.ui-button-success .ui-button.ui-state-default,
+.ui-splitbutton.ui-button-success .ui-button:enabled:active,
+.ui-button.ui-button-success:enabled:hover,
+.ui-splitbutton.ui-button-success .ui-button:enabled:hover {
+  background-image: linear-gradient(to right,#40dcb2,#40dc7e);
+  color: white !important;
+}
+
+/* Info */
+.ui-button.ui-button-info.ui-state-default,
+.ui-button.ui-button-info:enabled:active,
+.ui-splitbutton.ui-button-info .ui-button.ui-state-default,
+.ui-splitbutton.ui-button-info .ui-button:enabled:active,
+.ui-button.ui-button-info:enabled:hover,
+.ui-splitbutton.ui-button-info .ui-button:enabled:hover {
+  background-image: linear-gradient(to right,#4cc4ff,#4ca6ff);
+  color: white !important;
+}
+
+/* Danger */
+.ui-button.ui-button-danger.ui-state-default,
+.ui-button.ui-button-danger:enabled:active,
+.ui-splitbutton.ui-button-danger .ui-button.ui-state-default,
+.ui-splitbutton.ui-button-danger .ui-button:enabled:active,
+.ui-button.ui-button-danger:enabled:hover,
+.ui-splitbutton.ui-button-danger .ui-button:enabled:hover {
+  background-image: linear-gradient(to right,#ff4ca6,#ff4c6a);
+  color: white !important;
+}
+
+/* Warning */
+.ui-button.ui-button-warning.ui-state-default,
+.ui-button.ui-button-warning:enabled:active,
+.ui-splitbutton.ui-button-warning .ui-button.ui-state-default,
+.ui-splitbutton.ui-button-warning .ui-button:enabled:active,
+.ui-button.ui-button-warning:enabled:hover,
+.ui-splitbutton.ui-button-warning .ui-button:enabled:hover{
+  background-image: linear-gradient(to right,#fc0,#ffa100);
+  color: white !important;
+}
+
+//radiobutton
+.ui-radiobutton-box {
+  background-color: transparent;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #dadfe6;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.ui-radiobutton-box.ui-state-active>.ui-radiobutton-icon::before{
+  display:none !important;
+}
+.ui-radiobutton-box.ui-state-active > .ui-radiobutton-icon{
+  width: .5rem;
+  height: .5rem;
+  background-color: #40dc7e;
+  border-radius: 50%;
+  margin-top: 0 !important;
 }
 
 //datatable
@@ -69,9 +181,6 @@
   padding: 11px !important;
   border-right: 0 !important;
   border-left: 0 !important;
-}
-.ui-table-tbody tr:hover {
-  background: white !important
 }
 
 /* Validation */

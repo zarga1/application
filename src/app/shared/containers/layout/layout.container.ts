@@ -8,7 +8,7 @@ import { ConfigService }    from '../../../app-config.service';
   styleUrls: ['./layout.container.scss'],
   template: `
     <app-header></app-header>
-    <navigation></navigation>
+    <!--<navigation></navigation>-->
     <div class="layout-content">
       <ng-content></ng-content>
     </div>
