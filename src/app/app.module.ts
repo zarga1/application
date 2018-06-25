@@ -94,8 +94,6 @@ export function configServiceFactory (config: ConfigService) {
 
     EffectsModule.forRoot([]),
 
-    ProductsModule,
-
     EntityStoreModule,
   ],
   providers: [

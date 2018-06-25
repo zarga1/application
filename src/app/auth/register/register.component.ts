@@ -18,7 +18,6 @@ import { AuthSandbox }  from '../auth.sandbox';
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  host: {'[@moveIn]': ''}
 })
 export class RegisterComponent {
   public submitted:       boolean = false;

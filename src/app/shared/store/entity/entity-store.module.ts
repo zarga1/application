@@ -10,7 +10,7 @@ import {
   Pluralizer
 } from 'ngrx-data';
 import { AppEntityServices } from './app-entities.service';
-import { AppPluralizer } from './app-pluralizer.class';
+import { AppPluralizer } from '../../utility/app-pluralizer.class';
 
 
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
@@ -30,7 +30,9 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
 @NgModule({
   imports: [
     NgrxDataModule.forRoot({
-      entityMetadata: {}
+      entityMetadata: {
+        Product: {}
+      }
     })
   ],
   providers: [
