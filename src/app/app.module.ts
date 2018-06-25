@@ -46,8 +46,8 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { CustomRouterStateSerializer } from './shared/utility/router-state-serializer.class';
 import { ProductsModule } from './products/products.module';
-import { EntityStoreModule } from './shared/store/entity-store.module';
 import { HttpClientModule } from '@angular/common/http';
+import { EntityStoreModule } from './shared/store/entity/entity-store.module';
 
 /**
  * Calling functions or calling new is not supported in metadata when using AoT.

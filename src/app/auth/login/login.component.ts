@@ -15,8 +15,6 @@ import { AuthSandbox }     from '../auth.sandbox';
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [moveIn()],
-  host: {'[@moveIn]': ''},
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
@@ -36,7 +34,7 @@ export class LoginComponent {
   }
 
   /**
-   * Builds a form instance (using FormBuilder) with corresponding validation rules 
+   * Builds a form instance (using FormBuilder) with corresponding validation rules
    */
   public initLoginForm(): void {
     this.loginForm = this.fb.group({

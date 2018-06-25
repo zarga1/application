@@ -18,7 +18,6 @@ import { AuthSandbox }  from '../auth.sandbox';
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  animations: [moveIn(), fallIn()],
   host: {'[@moveIn]': ''}
 })
 export class RegisterComponent {
@@ -41,7 +40,7 @@ export class RegisterComponent {
   }
 
   /**
-   * Builds a form instance (using FormBuilder) with corresponding validation rules 
+   * Builds a form instance (using FormBuilder) with corresponding validation rules
    */
   public initRegisterForm(): void {
     this.registerForm = this.fb.group(
@@ -61,7 +60,7 @@ export class RegisterComponent {
   public onSubmit(event: Event, form: any): void {
     event.stopPropagation();
     this.submitted = true;
-    
+
     if (this.registerForm.valid) this.authSandbox.register(form);
   }
 }
