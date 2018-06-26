@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Angular Architecture",
   "license": "MIT",
-  "author": "Ante Burazer <aburazer@netmedia.hr>",
+  "author": "BEN TAALA OMar",
   "angular-cli": {},
   "scripts": {
     "start": "npm run sy-pre-start & \"node_modules/.bin/ng\" serve --proxy-config proxy.conf.json",

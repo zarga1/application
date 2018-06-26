@@ -11,16 +11,16 @@ import {
 } from 'ngrx-data';
 import { AppEntityServices } from './app-entities.service';
 import { AppPluralizer } from '../../utility/app-pluralizer.class';
+import { CustomDataService } from './custom-dataservice.service';
 
 
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
-  root: 'localhost:3000',
+  root: 'api',
 
   entityHttpResourceUrls: {
 
     Product: {
-
-      entityResourceUrl: 'api/product/',
+      entityResourceUrl: 'api/products/',
       collectionResourceUrl: 'api/products/'
     }
   },
@@ -40,13 +40,14 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
     { provide: EntityServices, useExisting: AppEntityServices },
     { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig },
     { provide: Pluralizer, useClass: AppPluralizer },
-
+    CustomDataService
   ]
 })
 export class EntityStoreModule {
   constructor(
     entityDataService: EntityDataService,
+    customDataService: CustomDataService,
   ) {
-
+    entityDataService.registerService('Product', customDataService);
   }
 }

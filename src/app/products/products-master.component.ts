@@ -26,10 +26,10 @@ import { AppEntityServices } from '../shared/store/entity/app-entities.service';
   </div>
   <div class="content-container">
     <div class="list-container">
-      <div *ngIf="productsCollection$ | async as products">
+      <div>
         <span *ngIf="loading$ | async;else productsList" mode="indeterminate" color="accent"> Loading...</span>
         <ng-template #productsList>
-          <app-products-list [products]="products" [selectedProduct]="selectedProduct" [commands]="commands"></app-products-list>
+          <app-products-list [products]="productsCollection$ | async" [selectedProduct]="selectedProduct" [commands]="commands"></app-products-list>
         </ng-template>
       </div>
     </div>
@@ -39,7 +39,8 @@ import { AppEntityServices } from '../shared/store/entity/app-entities.service';
     </div>
   </div>
   `,
-  styles: [``],
+  styles: [`
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent
@@ -57,7 +58,9 @@ export class ProductsComponent
 
     this.productsService = appEntityServices.productsService;
     this.loading$ = this.productsService.loading$;
-    this.productsCollection$ = this.productsService.collection$;
+    this.productsCollection$ = this.productsService.entities$;
+
+    this.loadProducts();
   }
 
   close() {

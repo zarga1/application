@@ -1,7 +1,9 @@
 {
   "/api": {
-    "target": "http://apa.netmedia.hr",
+    "target": "http://localhost:3000",
     "secure": false,
-    "changeOrigin": true
+    "pathRewrite": {
+      "^/api": ""
+    }
   }
 }

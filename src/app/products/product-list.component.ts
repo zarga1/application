@@ -12,11 +12,11 @@ import { MasterDetailCommands } from '../shared/utility/master-detail-component.
     <mat-card-content>
       <ul class="products">
         <li *ngFor="let product of products; trackBy: byId" class="item-container">
-          <button mat-button mat-suffix mat-icon-button color="accent" class="delete-button" aria-label="Delete" (click)="deleteProduct(product)"
+          <button mat-button mat-suffix mat-icon-button color="accent" class="delete-button" (click)="deleteProduct(product)"
             matTooltip="Delete the hero">
             <mat-icon>delete</mat-icon>
           </button>
-          <div class="selectable-item" [class.selected]="product === selectedproduct">
+          <div class="selectable-item" [class.selected]="product === selectedProduct">
             <div class="badge">{{product.id}}</div>
             <div class="item-text" (click)="onSelect(product)">
               <div class="name">{{product.name}}</div>
@@ -43,7 +43,7 @@ export class ProductsListComponent {
     this.commands.select(product);
   }
 
-  deleteHero(product: any) {
+  deleteProduct(product: any) {
     this.commands.delete(product);
   }
 }
